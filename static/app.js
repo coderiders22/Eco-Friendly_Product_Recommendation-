@@ -103,7 +103,7 @@
         steps.forEach((s, idx) => s.classList.toggle("active", idx === i));
         dots.forEach((d, idx) => d.classList.toggle("active", idx === i));
         if (nextBtn) {
-            nextBtn.textContent = i === steps.length - 1 ? "Get started ✓" : "Next →";
+            nextBtn.textContent = i === steps.length - 1 ? "Get started" : "Next";
         }
     };
 

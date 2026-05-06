@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="EcoWise — AI-powered eco-friendly product recommendations. Search smarter, shop greener.">
+    <meta name="description" content="EcoWise: AI-powered eco-friendly product recommendations. Search smarter, shop greener.">
     <meta name="theme-color" content="#16a34a">
-    <title>{% block title %}{{ site_name }} — {{ tagline }}{% endblock %}</title>
+    <title>{% block title %}{{ site_name }} | {{ tagline }}{% endblock %}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌿</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2316a34a%22 stroke-width=%222.4%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22M12 2C7 7 5 11 5 15a7 7 0 0 0 14 0c0-4-2-8-7-13Z%22/><path d=%22M12 22V11%22/></svg>">
 </head>
 <body>
     <header class="navbar">
@@ -57,9 +57,11 @@
             <div class="onboard-body">
                 <div class="onboard-step active" data-step="1">
                     <h4>1. Search anything you want</h4>
-                    <p>Type a product, brand or model — like <strong>macbook</strong>, <strong>phone</strong>, <strong>smart tv</strong> or <strong>kettle</strong>. We understand intent, not just keywords.</p>
+                    <p>Type a product, brand or model like <strong>macbook</strong>, <strong>phone</strong>, <strong>smart tv</strong> or <strong>kettle</strong>. We understand intent, not just keywords.</p>
                     <div class="onboard-illu">
-                        <div class="num">🔍</div>
+                        <div class="num">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+                        </div>
                         <div class="what">
                             <strong>Smart search bar</strong>
                             <span>Auto-suggestions appear as you type.</span>
@@ -70,7 +72,9 @@
                     <h4>2. We route to the right category</h4>
                     <p>Search "phone" and you’ll see real <strong>Smartphones</strong>, not phone accessories. Our NLP engine maps your query to the matching product family.</p>
                     <div class="onboard-illu">
-                        <div class="num">🧭</div>
+                        <div class="num">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+                        </div>
                         <div class="what">
                             <strong>Intent routing</strong>
                             <span>Brand- and synonym-aware matching.</span>
@@ -81,7 +85,9 @@
                     <h4>3. Top 5 picks, ranked smart</h4>
                     <p>We blend <strong>relevance</strong>, <strong>eco-score</strong> and real <strong>user ratings</strong> into a single hybrid score. Toggle sort to prefer eco or top-rated.</p>
                     <div class="onboard-illu">
-                        <div class="num">🌿</div>
+                        <div class="num">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2C7 7 5 11 5 15a7 7 0 0 0 14 0c0-4-2-8-7-13Z"/><path d="M12 22V11"/></svg>
+                        </div>
                         <div class="what">
                             <strong>Eco-grade badges</strong>
                             <span>A+ to D so you can choose at a glance.</span>
@@ -92,7 +98,9 @@
                     <h4>4. Dive deep & buy mindfully</h4>
                     <p>Open any product for full details and <strong>similar sustainable alternatives</strong>. Then head to the store with confidence.</p>
                     <div class="onboard-illu">
-                        <div class="num">✨</div>
+                        <div class="num">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"/></svg>
+                        </div>
                         <div class="what">
                             <strong>You’re ready!</strong>
                             <span>Try a search to see EcoWise in action.</span>
@@ -109,13 +117,19 @@
                 </div>
                 <div class="onboard-actions">
                     <button class="btn btn-ghost" id="onboardSkip">Skip</button>
-                    <button class="btn btn-primary" id="onboardNext">Next →</button>
+                    <button class="btn btn-primary" id="onboardNext">Next</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <button class="help-fab" id="helpFab" title="Show guide" aria-label="Show guide">?</button>
+    <button class="help-fab" id="helpFab" title="Show guide" aria-label="Show guide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M9.1 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+    </button>
 
     <footer class="footer">
         <div class="container footer-grid">
@@ -149,7 +163,7 @@
             <div>
                 <h4>Stay in the loop</h4>
                 <p class="muted small">Get sustainable picks every week.</p>
-                <form class="subscribe" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed ✓';">
+                <form class="subscribe" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed';">
                     <input type="email" placeholder="you@example.com" required>
                     <button type="submit">Join</button>
                 </form>

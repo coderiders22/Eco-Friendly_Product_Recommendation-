@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ product.product_name[:60] }} — {{ site_name }}{% endblock %}
+{% block title %}{{ product.product_name[:60] }} | {{ site_name }}{% endblock %}
 
 {% block content %}
 <section class="section">
@@ -26,7 +26,11 @@
                     </div>
                     <div>
                         <p class="label">Rating</p>
-                        <p class="value">★ {{ product.rating }} <span class="muted small">({{ product.rating_count }})</span></p>
+                        <p class="value rating-value">
+                            <svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            {{ product.rating }}
+                            <span class="muted small">({{ product.rating_count }})</span>
+                        </p>
                     </div>
                     <div>
                         <p class="label">Price</p>
@@ -41,7 +45,7 @@
 
                 <div class="action-row">
                     {% if product.product_link %}
-                        <a class="btn btn-primary" href="{{ product.product_link }}" target="_blank" rel="noopener">View on store →</a>
+                        <a class="btn btn-primary" href="{{ product.product_link }}" target="_blank" rel="noopener">View on store</a>
                     {% endif %}
                     <a class="btn btn-soft" href="{{ url_for('search') }}">Back to search</a>
                 </div>

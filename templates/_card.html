@@ -20,7 +20,10 @@
             </div>
             <div>
                 <p class="label">Rating</p>
-                <p class="value">★ {{ item.rating }}</p>
+                <p class="value rating-value">
+                    <svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    {{ item.rating }}
+                </p>
             </div>
             <div>
                 <p class="label">Price</p>
@@ -31,7 +34,7 @@
     <div class="card-footer">
         <a href="{{ url_for('product', product_id=item.product_id) }}" class="btn btn-soft">Details</a>
         {% if item.product_link %}
-            <a href="{{ item.product_link }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Buy →</a>
+            <a href="{{ item.product_link }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Buy</a>
         {% else %}
             <span class="btn btn-disabled">Unavailable</span>
         {% endif %}
