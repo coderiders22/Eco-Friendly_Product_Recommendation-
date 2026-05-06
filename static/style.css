@@ -388,6 +388,51 @@ p  { margin: 0; }
 }
 @media (max-width: 760px) { .about-grid { grid-template-columns: 1fr; } }
 
+/* ---------- Developers ---------- */
+.dev-grid {
+    display: grid; gap: 1.2rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    margin-top: 2rem;
+}
+.dev-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.6rem 1.4rem;
+    text-align: center; box-shadow: var(--shadow-xs);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+.dev-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-md);
+}
+.dev-avatar {
+    width: 96px; height: 96px; border-radius: 50%;
+    margin: 0 auto 0.9rem;
+    background: linear-gradient(135deg, var(--eco-3), var(--eco-2));
+    color: #ffffff; display: grid; place-items: center;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 800; font-size: 1.4rem; letter-spacing: 0.04em;
+    box-shadow: 0 10px 22px rgba(22, 163, 74, 0.28);
+    overflow: hidden;
+    border: 3px solid var(--surface);
+    outline: 2px solid var(--eco-soft);
+}
+.dev-avatar img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.dev-card h3 {
+    margin: 0 0 0.25rem; font-size: 1.05rem;
+}
+.dev-role {
+    display: inline-block; font-size: 0.78rem; font-weight: 700;
+    color: var(--eco-2); background: var(--eco-soft-2);
+    border: 1px solid var(--border-strong);
+    padding: 0.22rem 0.6rem; border-radius: 999px;
+    margin-bottom: 0.7rem;
+}
+
 /* ---------- Product page ---------- */
 .product-page { padding-top: 1rem; }
 .product-hero {
