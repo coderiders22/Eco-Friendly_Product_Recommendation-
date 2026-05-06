@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}{{ product.product_name[:60] }} — {{ site_name }}{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container product-page">
+        <div class="product-hero">
+            <div class="product-image">
+                <img
+                    src="{{ product.img_link }}"
+                    data-fallback="{{ product.fallback_img }}"
+                    alt="{{ product.product_name }}"
+                    onerror="if(!this.dataset.fbk){this.dataset.fbk=1;this.src=this.dataset.fallback;}else{this.onerror=null;this.src='{{ url_for('static', filename='brand-fallback.svg') }}';this.classList.add('img-brand-fallback');}"
+                >
+                <span class="eco-badge eco-{{ product.eco_label }} big-badge">{{ product.eco_label }}</span>
+            </div>
+            <div class="product-info">
+                <span class="chip">{{ product.category }}</span>
+                <h1>{{ product.product_name }}</h1>
+
+                <div class="info-metrics">
+                    <div>
+                        <p class="label">Eco Score</p>
+                        <p class="value eco">{{ product.eco_score }}/100</p>
+                    </div>
+                    <div>
+                        <p class="label">Rating</p>
+                        <p class="value">★ {{ product.rating }} <span class="muted small">({{ product.rating_count }})</span></p>
+                    </div>
+                    <div>
+                        <p class="label">Price</p>
+                        <p class="value price">{{ product.discounted_price }}
+                            {% if product.actual_price and product.discount_percentage %}
+                                <span class="muted small strike">{{ product.actual_price }}</span>
+                                <span class="discount">{{ product.discount_percentage }} off</span>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    {% if product.product_link %}
+                        <a class="btn btn-primary" href="{{ product.product_link }}" target="_blank" rel="noopener">View on store →</a>
+                    {% endif %}
+                    <a class="btn btn-soft" href="{{ url_for('search') }}">Back to search</a>
+                </div>
+
+                {% if product.about_product %}
+                    <div class="about">
+                        <h3>About this product</h3>
+                        <p class="muted">{{ product.about_product[:600] }}{% if product.about_product|length > 600 %}…{% endif %}</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        {% if similar %}
+            <div class="section-head">
+                <div>
+                    <h2>You might also like</h2>
+                    <p class="muted">Similar sustainable picks in {{ product.category }}.</p>
+                </div>
+            </div>
+            <div class="grid">
+                {% for item in similar %}
+                    {% include "_card.html" %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

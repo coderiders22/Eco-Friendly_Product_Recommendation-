@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <div class="container hero-grid">
+        <div class="hero-copy">
+            <span class="pill">
+                <span class="pill-dot"></span> AI + Sustainability
+            </span>
+            <h1>Discover products that are <span class="grad">good for you</span> and the <span class="grad-2">planet.</span></h1>
+            <p class="lede">
+                EcoWise uses NLP and a hybrid eco-score model to surface the top 5 sustainable picks
+                for whatever you search — phones, kitchen, accessories and more.
+            </p>
+
+            <form action="{{ url_for('search') }}" method="GET" class="search-form hero-search" autocomplete="off">
+                <div class="search-input-wrap">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+                    <input id="heroSearch" type="text" name="q" placeholder="Try macbook, phone, smart tv, kettle, earbuds..." aria-label="Search products">
+                    <ul id="suggest" class="suggest" role="listbox"></ul>
+                </div>
+                <button type="submit" class="btn btn-primary">Recommend</button>
+            </form>
+
+            <div class="chips">
+                <span class="muted small">Popular:</span>
+                {% for term in ['macbook', 'phone', 'smart tv', 'earbuds', 'mixer grinder', 'kettle'] %}
+                    <a class="chip-link" href="{{ url_for('search', q=term) }}">{{ term }}</a>
+                {% endfor %}
+            </div>
+
+            <div class="stats">
+                <div><strong>1,300+</strong><span>Products scored</span></div>
+                <div><strong>40+</strong><span>Categories</span></div>
+                <div><strong>NLP</strong><span>Powered ranking</span></div>
+            </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="card-float card-a">
+                <div class="badge badge-a">A+</div>
+                <div>
+                    <p class="muted small">Eco Score</p>
+                    <p class="big">92<span class="muted">/100</span></p>
+                </div>
+            </div>
+            <div class="card-float card-b">
+                <div class="meter">
+                    <span style="width:78%"></span>
+                </div>
+                <p class="muted small">Sustainability index</p>
+            </div>
+            <div class="card-float card-c">
+                <p class="muted small">Top match</p>
+                <p class="big-2">Smart pick ✓</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-head">
+            <div>
+                <h2>Trending eco picks</h2>
+                <p class="muted">High eco-scores meet great ratings.</p>
+            </div>
+            <a class="btn btn-ghost" href="{{ url_for('search') }}">Browse all →</a>
+        </div>
+
+        <div class="grid">
+            {% for item in trending %}
+                {% include "_card.html" %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section id="how" class="section section-alt">
+    <div class="container">
+        <div class="section-head center">
+            <div>
+                <span class="pill pill-soft">How it works</span>
+                <h2>Three steps to a smarter, greener basket</h2>
+                <p class="muted">Behind the scenes EcoWise blends semantic search with eco-scoring.</p>
+            </div>
+        </div>
+        <div class="how-grid">
+            <div class="how-card">
+                <div class="how-num">1</div>
+                <h3>Search anything</h3>
+                <p class="muted">Type a brand, a product, or a category — like "macbook" or "kettle".</p>
+            </div>
+            <div class="how-card">
+                <div class="how-num">2</div>
+                <h3>NLP routes intent</h3>
+                <p class="muted">We expand your query, then route it to the right product family using TF-IDF + synonyms.</p>
+            </div>
+            <div class="how-card">
+                <div class="how-num">3</div>
+                <h3>Top 5, ranked smart</h3>
+                <p class="muted">Hybrid score combines relevance, eco-score, and real ratings.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="section">
+    <div class="container about-grid">
+        <div>
+            <span class="pill pill-soft">About</span>
+            <h2>Why EcoWise?</h2>
+            <p class="muted">
+                Every search is an opportunity to choose better. EcoWise scores products on sustainability
+                signals from their listing — materials, durability cues, certifications — and combines that
+                with what real shoppers think. The result: confident, mindful picks in seconds.
+            </p>
+            <ul class="check-list">
+                <li>Hybrid ranking (relevance + eco + rating)</li>
+                <li>Smart search routing (e.g. "phone" → Smartphones)</li>
+                <li>Transparent eco-score badges on every product</li>
+                <li>Fast, responsive, and mobile-first</li>
+            </ul>
+        </div>
+        <div class="about-card">
+            <div class="meter big-meter">
+                <span style="width:88%"></span>
+            </div>
+            <h3>Eco confidence: 88%</h3>
+            <p class="muted small">Average eco-score across our top trending picks today.</p>
+            <a href="{{ url_for('search') }}" class="btn btn-primary full">Try a search now</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

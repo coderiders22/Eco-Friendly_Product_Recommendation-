@@ -1,0 +1,39 @@
+<article class="card product-card">
+    <a href="{{ url_for('product', product_id=item.product_id) }}" class="thumb-wrap" aria-label="{{ item.product_name }}">
+        <img
+            src="{{ item.img_link }}"
+            data-fallback="{{ item.fallback_img }}"
+            alt="{{ item.product_name }}"
+            loading="lazy"
+            onerror="if(!this.dataset.fbk){this.dataset.fbk=1;this.src=this.dataset.fallback;}else{this.onerror=null;this.src='{{ url_for('static', filename='brand-fallback.svg') }}';this.classList.add('img-brand-fallback');}"
+        >
+        <span class="eco-badge eco-{{ item.eco_label }}">{{ item.eco_label }}</span>
+    </a>
+    <div class="card-body">
+        <span class="chip">{{ item.category }}</span>
+        <h3 class="product-name" title="{{ item.product_name }}">{{ item.product_name }}</h3>
+
+        <div class="metrics">
+            <div>
+                <p class="label">Eco</p>
+                <p class="value eco">{{ item.eco_score }}</p>
+            </div>
+            <div>
+                <p class="label">Rating</p>
+                <p class="value">★ {{ item.rating }}</p>
+            </div>
+            <div>
+                <p class="label">Price</p>
+                <p class="value price">{{ item.discounted_price }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <a href="{{ url_for('product', product_id=item.product_id) }}" class="btn btn-soft">Details</a>
+        {% if item.product_link %}
+            <a href="{{ item.product_link }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Buy →</a>
+        {% else %}
+            <span class="btn btn-disabled">Unavailable</span>
+        {% endif %}
+    </div>
+</article>

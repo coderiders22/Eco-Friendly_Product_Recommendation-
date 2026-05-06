@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Search — {{ site_name }}{% endblock %}
+
+{% block content %}
+<section class="search-hero">
+    <div class="container">
+        <h1 class="search-title">Find your next eco-friendly pick</h1>
+        <form action="{{ url_for('search') }}" method="GET" class="search-form filter-form" autocomplete="off">
+            <div class="search-input-wrap">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+                <input id="heroSearch" type="text" name="q" value="{{ query }}" placeholder="Search anything — macbook, phone, smart tv..." aria-label="Search">
+                <ul id="suggest" class="suggest" role="listbox"></ul>
+            </div>
+            <select name="category" aria-label="Filter category">
+                {% for c in categories %}
+                    <option value="{{ c }}" {% if c == category %}selected{% endif %}>{{ c }}</option>
+                {% endfor %}
+            </select>
+            <select name="sort" aria-label="Sort">
+                <option value="balanced" {% if sort_by=='balanced' %}selected{% endif %}>Balanced (best match)</option>
+                <option value="eco" {% if sort_by=='eco' %}selected{% endif %}>Most eco-friendly</option>
+                <option value="rating" {% if sort_by=='rating' %}selected{% endif %}>Top rated</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        {% if message %}
+            <div class="status-card">{{ message }}</div>
+        {% endif %}
+
+        {% if recommendations %}
+            <div class="section-head">
+                <div>
+                    <h2>Top {{ recommendations|length }} for “{{ query }}”</h2>
+                    <p class="muted">Ranked by relevance, eco-score, and rating.</p>
+                </div>
+            </div>
+            <div class="grid">
+                {% for item in recommendations %}
+                    {% include "_card.html" %}
+                {% endfor %}
+            </div>
+        {% elif not message %}
+            <div class="empty">
+                <h3>Start by searching above 👆</h3>
+                <p class="muted">Try “macbook”, “phone”, “earbuds” or “kettle”.</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
