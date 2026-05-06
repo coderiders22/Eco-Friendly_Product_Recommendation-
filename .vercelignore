@@ -1,0 +1,6 @@
+amazon.csv
+.git
+__pycache__
+*.pyc
+.DS_Store
+README.md

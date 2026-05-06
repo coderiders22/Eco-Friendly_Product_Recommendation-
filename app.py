@@ -215,3 +215,8 @@ def inject_globals():
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5051)
+
+
+# Vercel serverless entry — Vercel looks for `app` (WSGI) by default.
+# This alias makes intent explicit.
+application = app
